@@ -8,8 +8,8 @@ const Blockchain = require('./blockchain');
 const bitcoin = new Blockchain();
 
 //나의 네트워크 고유 아이디 생성
-const uuid = require('uuid/v1');
-let nodeAddress = uuid().split('-').join('');
+const uuid = require('uuid');
+let nodeAddress = uuid.v1().split('-').join('');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
@@ -24,6 +24,7 @@ app.get('/blockchain', function (req, res) {
 app.post('/transaction', function (req, res) {
 
   const blockIndex = bitcoin.createNewTransaction(req.body.amount,req.body.sender,req.body.recipient)
+  console.log(bitcoin);
   res.json({note : `트랜젝션은 ${blockIndex} 블락안으로 들어갈 예정입니다.`})
 
 })

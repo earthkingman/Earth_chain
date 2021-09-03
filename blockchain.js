@@ -52,7 +52,6 @@ Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, n
 }
 
 Blockchain.prototype.proofOfWork = function(previousBlockHash,currentBlockData){
-
     let nonce = 0;
     let hash = this.hashBlock(previousBlockHash,currentBlockData,nonce);
     console.log("첫 해쉬"+ hash);
